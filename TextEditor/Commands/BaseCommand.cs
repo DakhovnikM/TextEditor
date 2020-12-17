@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
-namespace TextEditor
+namespace TextEditor.Commands
 {
-    abstract class BaseCommand : ICommand
+    internal abstract class BaseCommand : ICommand
     {
         public event EventHandler CanExecuteChanged
         {

@@ -1,27 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TextEditor
+namespace TextEditor.Commands
 {
-    class RelayCommand : BaseCommand
+    internal class RelayCommand : BaseCommand
     {
-        private Action<object> execute;
-        private Func<object, bool> canExecute;
+        private readonly Action<object> _execute;
+        private readonly Func<object, bool> _canExecute;
 
-        public RelayCommand(Func<object, bool> CanExecute, Action<object> Execute)
+        public RelayCommand(Func<object, bool> canExecute, Action<object> execute)
         {
-            canExecute = CanExecute;
-            execute = Execute;
+            _canExecute = canExecute;
+            _execute = execute;
         }
         public override bool CanExecute(object parameter)
         {
-            return canExecute?.Invoke(parameter) ?? true;
+            return _canExecute?.Invoke(parameter) ?? true;
         }
 
         public override void Execute(object parameter)
         {
-            execute(parameter);
+            _execute(parameter);
         }
     }
 }

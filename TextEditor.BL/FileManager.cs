@@ -1,17 +1,15 @@
-using System;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace TextEditor.BL
 {
     public class FileManager
     {
-        private readonly Encoding defaultEncoding = Encoding.UTF8;
+        private readonly Encoding _defaultEncoding = Encoding.UTF8;
 
         public string GetString(string filePath)
         {
-            return GetString(filePath, defaultEncoding);
+            return GetString(filePath, _defaultEncoding);
         }
 
         public string GetString(string filePath, Encoding encoding)
@@ -23,7 +21,7 @@ namespace TextEditor.BL
 
         public void SaveString(string filePath, string content)
         {
-            SaveString(filePath, content, defaultEncoding);
+            SaveString(filePath, content, _defaultEncoding);
         }
 
         public void SaveString(string filePath, string content, Encoding encoding)

@@ -1,13 +1,9 @@
 ﻿using Microsoft.Win32;
-
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows.Input;
-
 using TextEditor.BL;
+using TextEditor.Commands;
+using TextEditor.ViewModel;
 
 namespace TextEditor
 {
@@ -22,7 +18,7 @@ namespace TextEditor
             set
             {
                 filePath = value;
-                OnpropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -33,7 +29,7 @@ namespace TextEditor
             set
             {
                 stringFile = value;
-                OnpropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -74,7 +70,7 @@ namespace TextEditor
         private bool CanSaveFileCommandExecute(object p) => true;
         private void OnSaveFileCommandExecuted(object p)
         {
-            fileManager.SaveString(FilePath,StringFile);
+            fileManager.SaveString(FilePath, StringFile);
 
         }
         #endregion
