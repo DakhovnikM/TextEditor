@@ -13,8 +13,7 @@ namespace TextEditor
 {
     class MainWindowViewModel : BaseViewModel
     {
-        FileManager fileManager;
-
+        readonly FileManager fileManager;
 
         private string filePath;
         public string FilePath
@@ -34,17 +33,6 @@ namespace TextEditor
             set
             {
                 stringFile = value;
-                OnpropertyChanged();
-            }
-        }
-
-        private int symbolStringFileCount;
-        public int SymbolStringFileCount
-        {
-            get => symbolStringFileCount;
-            set
-            {
-                symbolStringFileCount = StringFile.Length;
                 OnpropertyChanged();
             }
         }
@@ -72,7 +60,6 @@ namespace TextEditor
             try
             {
                 StringFile = fileManager.GetString(FilePath);
-                SymbolStringFileCount = StringFile.Length;
             }
             catch (Exception)
             {
@@ -83,11 +70,11 @@ namespace TextEditor
 
         }
 
-        public ICommand SaveFileCommand;
+        public ICommand SaveFileCommand { get; }
         private bool CanSaveFileCommandExecute(object p) => true;
         private void OnSaveFileCommandExecuted(object p)
         {
-
+            fileManager.SaveString(FilePath,StringFile);
 
         }
         #endregion
@@ -100,9 +87,5 @@ namespace TextEditor
             SaveFileCommand = new RelayCommand(CanSaveFileCommandExecute, OnSaveFileCommandExecuted);
         }
 
-        private void GetSymbolStringFileCount()
-        {
-            SymbolStringFileCount = stringFile.Length;
-        }
     }
 }

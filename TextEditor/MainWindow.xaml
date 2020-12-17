@@ -22,7 +22,7 @@
             <StatusBar DockPanel.Dock="Bottom" >
                 <Label Content="Количество символов:"/>
                 <Label Name="LB"/>
-                <Button Content="Сохранить" Margin="10,0,5,0"></Button>
+                <Button Content="Сохранить" Margin="10,0,5,0" Command="{Binding SaveFileCommand}"></Button>
             </StatusBar>
             <TextBox TextWrapping="Wrap" Text="{Binding StringFile}" TextChanged="TextBox_TextChanged" VerticalScrollBarVisibility="Auto"></TextBox>
         </DockPanel>

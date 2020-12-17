@@ -34,9 +34,5 @@ namespace TextEditor.BL
                 throw new FileNotFoundException(filePath);
         }
 
-        public int GetSimbolCount(string count)
-        {
-            return count.Length;
-        }
     }
 }
