@@ -1,4 +1,5 @@
 ﻿<Window x:Class="TextEditor.MainWindow"
+        x:Name="M_Window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -19,11 +20,11 @@
                 <TextBox  Margin="0,2,0,2" Text="{Binding FilePath}" HorizontalContentAlignment="Left"></TextBox>
             </DockPanel>
             <StatusBar DockPanel.Dock="Bottom" >
-                <Label Content="Размер шрифта"/>
-                <TextBox Text="{Binding SymbolStringFileCount}"></TextBox>
+                <Label Content="Количество символов:"/>
+                <Label Name="LB"/>
                 <Button Content="Сохранить" Margin="10,0,5,0"></Button>
             </StatusBar>
-            <TextBox TextWrapping="Wrap" Text="{Binding StringFile}"></TextBox>
+            <TextBox TextWrapping="Wrap" Text="{Binding StringFile}" TextChanged="TextBox_TextChanged" VerticalScrollBarVisibility="Auto"></TextBox>
         </DockPanel>
     </Grid>
 </Window>

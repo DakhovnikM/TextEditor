@@ -44,7 +44,7 @@ namespace TextEditor
             get => symbolStringFileCount;
             set
             {
-                symbolStringFileCount = value;
+                symbolStringFileCount = StringFile.Length;
                 OnpropertyChanged();
             }
         }
@@ -72,6 +72,7 @@ namespace TextEditor
             try
             {
                 StringFile = fileManager.GetString(FilePath);
+                SymbolStringFileCount = StringFile.Length;
             }
             catch (Exception)
             {
