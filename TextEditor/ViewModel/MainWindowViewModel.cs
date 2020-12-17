@@ -7,19 +7,23 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 
+using TextEditor.BL;
+
 namespace TextEditor
 {
     class MainWindowViewModel : BaseViewModel
     {
+        FileManager fileManager;
 
-        private string filePath=null;
+
+        private string filePath;
         public string FilePath
         {
             get => filePath;
             set
             {
                 filePath = value;
-                OnpropertyChanged(FilePath);
+                OnpropertyChanged();
             }
         }
 
@@ -30,7 +34,7 @@ namespace TextEditor
             set
             {
                 stringFile = value;
-                OnpropertyChanged(StringFile);
+                OnpropertyChanged();
             }
         }
 
@@ -41,20 +45,40 @@ namespace TextEditor
             set
             {
                 symbolStringFileCount = value;
-                OnpropertyChanged("SymbolStringFileCount");
+                OnpropertyChanged();
             }
         }
 
+        #region Команды
+
+        public ICommand GetFilePathCommand { get; }
+        private bool CanGetFilePathCommandExecute(object p) => true;
+        private void OnGetFilePathCommandExecuted(object p)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Текстовые файлы|*.txt"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+                FilePath = openFileDialog.FileName;
+
+        }
 
         public ICommand OpenFileCommand { get; }
         private bool CanOpenFileCommandExecute(object p) => true;
         private void OnOpenFileCommandExecuted(object p)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Текстовые файлы|*.txt";
+            try
+            {
+                StringFile = fileManager.GetString(FilePath);
+            }
+            catch (Exception)
+            {
 
-            if (openFileDialog.ShowDialog() == true)
-                FilePath = openFileDialog.FileName;
+                throw;
+            }
+
 
         }
 
@@ -65,9 +89,12 @@ namespace TextEditor
 
 
         }
-
+        #endregion
         public MainWindowViewModel()
         {
+            fileManager = new FileManager();
+
+            GetFilePathCommand = new RelayCommand(CanGetFilePathCommandExecute, OnGetFilePathCommandExecuted);
             OpenFileCommand = new RelayCommand(CanOpenFileCommandExecute, OnOpenFileCommandExecuted);
             SaveFileCommand = new RelayCommand(CanSaveFileCommandExecute, OnSaveFileCommandExecuted);
         }

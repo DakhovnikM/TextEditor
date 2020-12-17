@@ -7,7 +7,7 @@ namespace TextEditor.BL
 {
     public class FileManager
     {
-        private readonly Encoding defaultEncoding = Encoding.GetEncoding(1251);
+        private readonly Encoding defaultEncoding = Encoding.UTF8;
 
         public string GetString(string filePath)
         {
