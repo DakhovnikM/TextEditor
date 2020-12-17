@@ -78,6 +78,7 @@ namespace TextEditor
 
         }
         #endregion
+
         public MainWindowViewModel()
         {
             fileManager = new FileManager();
