@@ -30,7 +30,8 @@ namespace TextEditor.BL
         {
             if (File.Exists(filePath))
                 File.WriteAllText(filePath, content, encoding);
-
+            else 
+                throw new FileNotFoundException(filePath);
         }
 
         public int GetSimbolCount(string count)

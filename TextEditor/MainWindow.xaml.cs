@@ -23,6 +23,7 @@ namespace TextEditor
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
     }
 }

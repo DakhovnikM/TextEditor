@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextEditor"
+        xmlns:dc="clr-namespace:TextEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance dc:MainWindowViewModel, IsDesignTimeCreatable=True}">
     <Grid>
-
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Label Content="Выберите файл" DockPanel.Dock="Left"/>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                    <Button Content="Выбрать" Margin="5,0,5,0"></Button>
+                    <Button Content="Открыть" Margin="5,0,5,0" Command="{Binding OpenFileCommand}"></Button>
+                </StackPanel>
+                <TextBox  Margin="0,2,0,2" Text="{Binding FilePath}"></TextBox>
+            </DockPanel>
+            <StatusBar DockPanel.Dock="Bottom" >
+                <Label Content="Размер шрифта"/>
+                <TextBox Text="{Binding SymbolStringFileCount}"></TextBox>
+                <Button Content="Сохранить" Margin="10,0,5,0"></Button>
+            </StatusBar>
+            <TextBox TextWrapping="Wrap" Text="{Binding StringFile}"></TextBox>
+        </DockPanel>
     </Grid>
 </Window>
