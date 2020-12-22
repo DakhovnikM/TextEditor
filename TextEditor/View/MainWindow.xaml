@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextEditor"
-        xmlns:dc="clr-namespace:TextEditor"
+        xmlns:dc="clr-namespace:TextEditor.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance dc:MainWindowViewModel, IsDesignTimeCreatable=True}">
     <Grid>
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
-                <Label Content="Выберите файл" DockPanel.Dock="Left"/>
+                <Label Content="Файл" DockPanel.Dock="Left"/>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
                     <Button Content="Выбрать" Margin="5,0,5,0" Command="{Binding GetFilePathCommand}"></Button>
                     <Button Content="Открыть" Margin="5,0,5,0" Command="{Binding OpenFileCommand}"></Button>
