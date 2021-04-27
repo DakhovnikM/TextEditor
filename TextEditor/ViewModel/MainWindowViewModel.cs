@@ -1,7 +1,9 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
+
+using Microsoft.Win32;
+
 using TextEditor.BL;
 using TextEditor.Commands;
 
@@ -76,9 +78,9 @@ namespace TextEditor.ViewModel
         {
             fileManager = new FileManager();
 
-            GetFilePathCommand = new RelayCommand(CanGetFilePathCommandExecute, OnGetFilePathCommandExecuted);
-            OpenFileCommand = new RelayCommand(CanOpenFileCommandExecute, OnOpenFileCommandExecuted);
-            SaveFileCommand = new RelayCommand(CanSaveFileCommandExecute, OnSaveFileCommandExecuted);
+            GetFilePathCommand = new RelayCommand( OnGetFilePathCommandExecuted, CanGetFilePathCommandExecute);
+            OpenFileCommand = new RelayCommand( OnOpenFileCommandExecuted, CanOpenFileCommandExecute);
+            SaveFileCommand = new RelayCommand( OnSaveFileCommandExecuted, CanSaveFileCommandExecute);
         }
     }
 }

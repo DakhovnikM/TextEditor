@@ -7,7 +7,7 @@ namespace TextEditor.Commands
         private readonly Action<object> _execute;
         private readonly Func<object, bool> _canExecute;
 
-        public RelayCommand(Func<object, bool> canExecute, Action<object> execute)
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _canExecute = canExecute;
             _execute = execute;
