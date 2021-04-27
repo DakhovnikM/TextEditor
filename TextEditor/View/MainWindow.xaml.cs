@@ -10,7 +10,6 @@ namespace TextEditor.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        public int Count { get; set; } 
         public MainWindow()
         {
             InitializeComponent();
@@ -20,8 +19,7 @@ namespace TextEditor.View
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
-            Count = textBox.Text.Length;
-            Lb.Content = Count;
+            Lb.Content = textBox.Text.Length;
         }
     }
 }
